@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "mask-rcnn"
+version = "0.1.0"
+description = ""
+authors = ["julienmalard <julien.malard@mail.mcgill.ca>"]
+readme = "README.md"
+packages = [{include = "mask_rcnn"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+opencv-python = "^4.6.0.66"
+matplotlib = "^3.6.1"
+keras = "^2.0.8"
+imgaug = "^0.4.0"
+pycocotools = "^2.0.5"
+tensorflow = "^2.10.0"
+numpy = "^1.23.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

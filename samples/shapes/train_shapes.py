@@ -229,7 +229,7 @@ if __name__ == '__main__':
                               model_dir=MODEL_DIR)
 
     # Which weights to start with?
-    init_with = "coco"  # imagenet, coco, or last
+    init_with = "last"  # imagenet, coco, or last
 
     if init_with == "imagenet":
         model.load_weights(model.get_imagenet_weights(), by_name=True)
@@ -248,7 +248,7 @@ if __name__ == '__main__':
     # Passing layers="heads" freezes all layers except the head
     # layers. You can also pass a regular expression to select
     # which layers to train by name pattern.
-    model.train(dataset_train, dataset_val,
+    """model.train(dataset_train, dataset_val,
                 learning_rate=config.LEARNING_RATE,
                 epochs=1,
                 layers='heads')
@@ -261,7 +261,7 @@ if __name__ == '__main__':
                 learning_rate=config.LEARNING_RATE / 10,
                 epochs=2,
                 layers="all")
-
+    """
 
     # Save weights
     # Typically not needed because callbacks save after every epoch
@@ -293,8 +293,7 @@ if __name__ == '__main__':
     # Test on a random image
     image_id = random.choice(dataset_val.image_ids)
     original_image, image_meta, gt_class_id, gt_bbox, gt_mask = \
-        modellib.load_image_gt(dataset_val, inference_config,
-                               image_id, use_mini_mask=False)
+        modellib.load_image_gt(dataset_val, inference_config, image_id)
 
     log("original_image", original_image)
     log("image_meta", image_meta)
